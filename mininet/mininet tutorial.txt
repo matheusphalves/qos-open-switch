@@ -1,0 +1,15 @@
+O arquivo router.py mostra a criação de uma rede ponto a ponto com 2  switches com 1 servidor cada e um roteador interligando os switches
+
+Para criar a rede, execute o comando: sudo mn --custom /home/mininet/Router.py --topo router
+
+A seguir é listada a linha de comando para criação do serviço (cliente-servidor HTTP) 
+apresentada na Figura 5.2, onde as aplicações são um cliente e servidor 
+ 
+~$  sudo  mn       { Iniciando o Mininet } 
+~$  mn --topo tree,depth=3,fanout=3 -- link=tc,bw=10  { carregando topologia padrão parametrizada. Ex. bw banda do link igual a 10 Mbit/s } 
+mininet> xterm h1 h2  { acessando os servidores h1 e h2 } 
+h1# wireshark & { habilitando o wireshark para captura de pacotes na interface local de 
+h1 } 
+h2# python -m SimpleHTTPServer 80 & { habilitando a aplicação de HTTP Server em 
+h1 } 
+h1# firefox & { habilitando a aplicação do cliente em h2 }
